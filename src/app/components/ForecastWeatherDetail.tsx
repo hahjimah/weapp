@@ -16,23 +16,34 @@ export interface ForecastWeatherDetailProps extends WeatherDetailProps {
 }
 
 const ForecastWeatherDetail = (props: ForecastWeatherDetailProps) => {
+  const {
+    weatherIcon = "02d",
+    date = "19.09",
+    day = "Tuesday",
+    temp,
+    feels_like,
+    temp_min,
+    temp_max,
+    description,
+  } = props;
+
   return (
     <Container className="gap-4">
       {/**left */}
       <section className="flex gap-4 items-center px-4">
         <div className="flex flex-col gap-1 items-center">
-          <WeatherIcon iconName={props.weatherIcon} />
-          <p>{props.date}</p>
-          <p className="text-sm">{props.day}</p>
+          <WeatherIcon iconName={weatherIcon} />
+          <p>{date}</p>
+          <p className="text-sm">{day}</p>
         </div>
         {/** */}
         <div className="flex flex-col px-4">
-          <span>{convertKelvinToCelsisus(props.temp ?? 0)}°</span>
+          <span>{convertKelvinToCelsisus(temp ?? 0)}°</span>
           <p className="text-sm space-x-1 whitespace-nowrap">
             <span> Feels like</span>
-            <span>{convertKelvinToCelsisus(props.feels_like ?? 0)}°</span>
+            <span>{convertKelvinToCelsisus(feels_like ?? 0)}°</span>
           </p>
-          <p className="capitalize">{props.description}</p>
+          <p className="capitalize">{description}</p>
         </div>
       </section>
       {/**right*/}
